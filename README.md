@@ -70,10 +70,10 @@ If you want to use ProgDTD compression function in your own code, you can import
 from val import ProgDTD
 
 bpp, psnr, msssim, ssim = ProgDTD(
-    model_address,  # Trained model address
+    model_path,  # Trained model path
     p,  # Latent usage percentage
     Lambda,  # Hyperparameter
-    dataset_address  # Validation folder address (images should be 512x512)
+    dataset_path  # Validation folder path (images should be 512x512)
 )
 ```
 

@@ -54,7 +54,7 @@ def run_on_multiple_patches(x, model):
     
     return x_fold, bpp_loss
 
-def model_evalutation(model, dataset_address):
+def model_evalutation(model, dataset_path):
     
     MS_SSIM_LOSS = MS_SSIM(data_range=1, size_average=True, channel=3)
     SSIM_LOSS = SSIM(data_range=1, size_average=True, channel=3, nonnegative_ssim=True) # channel=1 for grayscale images
@@ -68,7 +68,7 @@ def model_evalutation(model, dataset_address):
     SSIM_loss_list = []
     MSSSIM_loss_list = []
     
-    file_names = glob.glob(dataset_address)
+    file_names = glob.glob(dataset_path)
     
     for im_path in file_names:
         
@@ -104,29 +104,29 @@ def model_evalutation(model, dataset_address):
 
 ###
 
-def ProgDTD(model_address, p, Lambda, dataset_address):
+def ProgDTD(model_path, p, Lambda, dataset_path):
     model = ScaleHyperpriorLightning(
         model=ScaleHyperprior(network_channels=128, compression_channels=192),
         distortion_lambda=Lambda,
     )
-    model = torch.load(model_address) 
+    model = torch.load(model_path) 
     
     model.model.p_latent = p
     model.model.p_hyper_latent = model.model.p_latent
     
-    images_size, psnr, msssim, ssim = model_evalutation(model, dataset_address)
+    images_size, psnr, msssim, ssim = model_evalutation(model, dataset_path)
     torch.cuda.empty_cache()
     del model
     
     return images_size, psnr, msssim, ssim
 
 
-def Evaluation(Lambda, metrics, prog_range, dataset_address):
+def Evaluation(Lambda, metrics, prog_range, dataset_path):
     res = []
     for i in tqdm([1, 5,10, 15, 20, 25, 30, 40, 50 , 60, 70, 80, 85, 90, 95, 100]):
-        model_address = f'Lambda={Lambda} - range={prog_range}'
-        print(model_address)
-        images_size, psnr, msssim, ssim = ProgDTD(model_address, i/100, Lambda, dataset_address)
+        model_path = f'Lambda={Lambda} - range={prog_range}'
+        print(model_path)
+        images_size, psnr, msssim, ssim = ProgDTD(model_path, i/100, Lambda, dataset_path)
         metrics['prog_range'].append(prog_range)
         metrics['Lambda'].append(Lambda)
         metrics['bpp'].append(images_size)
@@ -157,13 +157,13 @@ def main():
         'ssim':[],
     }
 
-    dataset_address = KODAK_dir
-    Evaluation(Lambda=0.01, metrics=metrics, prog_range='[0.0-1.0]', dataset_address=dataset_address)
-    Evaluation(Lambda=0.1, metrics=metrics, prog_range='[0.0-1.0]', dataset_address=dataset_address)
-    Evaluation(Lambda=1.0, metrics=metrics, prog_range='[0.0-1.0]', dataset_address=dataset_address)
-    Evaluation(Lambda=0.01, metrics=metrics, prog_range='[0.3-1.0]', dataset_address=dataset_address)
-    Evaluation(Lambda=0.1, metrics=metrics, prog_range='[0.3-1.0]', dataset_address=dataset_address)
-    Evaluation(Lambda=1.0, metrics=metrics, prog_range='[0.3-1.0]', dataset_address=dataset_address)
+    dataset_path = KODAK_dir
+    Evaluation(Lambda=0.01, metrics=metrics, prog_range='[0.0-1.0]', dataset_path=dataset_path)
+    Evaluation(Lambda=0.1, metrics=metrics, prog_range='[0.0-1.0]', dataset_path=dataset_path)
+    Evaluation(Lambda=1.0, metrics=metrics, prog_range='[0.0-1.0]', dataset_path=dataset_path)
+    Evaluation(Lambda=0.01, metrics=metrics, prog_range='[0.3-1.0]', dataset_path=dataset_path)
+    Evaluation(Lambda=0.1, metrics=metrics, prog_range='[0.3-1.0]', dataset_path=dataset_path)
+    Evaluation(Lambda=1.0, metrics=metrics, prog_range='[0.3-1.0]', dataset_path=dataset_path)
 
 
     # MS-SSIM

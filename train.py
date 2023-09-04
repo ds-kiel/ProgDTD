@@ -1,9 +1,3 @@
-import os
-SLICE_TYPE = '3g.40gb'
-SMI_LINE_ID = 1
-uuid = os.popen(f"nvidia-smi -L | sed -n 's/MIG {SLICE_TYPE}\(.*\): *//p' | sed -n '{SMI_LINE_ID}s/.$//p'").read()[2:-1]
-os.environ["CUDA_VISIBLE_DEVICES"] = uuid
-
 import numpy as np
 import torch
 from torchvision import transforms

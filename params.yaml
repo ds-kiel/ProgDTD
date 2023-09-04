@@ -2,8 +2,8 @@ batch_size: 4
 crop: 256
 resize: 256
 Lambda: 1.0
-vimeo_train_dir: '/data22/aho/vimeo_triplet'
+vimeo_train_dir: '/vimeo_triplet'
 epoch: 15
 save_dir: './Lambda=1.0 - range=[0.3-1.0]'
-KODAK_dir: "./../ProgDTD/KODAK/*"
+KODAK_dir: "./KODAK/*"
 progressiveness_range: [0.3, 1.0]

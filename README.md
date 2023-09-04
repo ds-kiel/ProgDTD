@@ -69,7 +69,7 @@ If you want to use ProgDTD compression function in your own code, you can import
 ```python
 from val import ProgDTD
 
-images_size, psnr, msssim, ssim = ProgDTD(
+bpp, psnr, msssim, ssim = ProgDTD(
     model_address,  # Trained model address
     p,  # Latent usage percentage
     Lambda,  # Hyperparameter

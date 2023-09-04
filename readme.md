@@ -1,7 +1,7 @@
 
 # ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW-2023)
 
-Welcome to the ProgDTD repository! This repository contains the code for reproducing the results presented in the paper titled "ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW-2023)." Our research focuses on enhancing user experience by introducing progressive image compression, which allows images to load in a low-resolution format and progressively improve in quality as more data is received. Traditional image compression methods, including both classical and learned approaches, are typically non-progressive. ProgDTD addresses this by introducing a training method that transforms non-progressive compression models into progressive ones.
+Welcome to the ProgDTD repository! This repository contains the code for reproducing the results presented in the paper titled "ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW-2023)."
 
 ## About ProgDTD
 
@@ -11,7 +11,7 @@ ProgDTD is based on the observation that the information stored within the bottl
 - No need for additional parameters.
 - Customizable range of progressiveness.
 
-In our experiments, we applied ProgDTD to the hyperprior model, a commonly used structure in learned image compression. Our results demonstrate that ProgDTD performs comparably to non-progressive counterparts and other state-of-the-art progressive models in terms of MS-SSIM and accuracy.
+In our experiments, we applied ProgDTD to the hyperprior model, a commonly used structure in learned image compression. Our results demonstrate that ProgDTD performs comparably to non-progressive counterparts and other state-of-the-art progressive models in MS-SSIM.
 
 ## Installation Instructions
 
@@ -45,6 +45,9 @@ To train a model from scratch, execute the following command:
 python train.py
 ```
 
+### Trained models
+You can download the pretrained models [here](https://drive.google.com/drive/folders/1tO9yAohVi4uqEXcKLa9iyVKTHA1A2ztq?usp=sharing).
+
 ### Evaluation on KODAK Dataset
 
 To evaluate the model on the KODAK dataset, run:
@@ -68,8 +71,13 @@ images_size, psnr, msssim, ssim = ProgDTD(
 )
 ```
 
-Feel free to explore and experiment with ProgDTD to enhance your image compression tasks with progressive capabilities. If you have any questions or encounter issues, please refer to the documentation or reach out to the repository's maintainers for assistance.
+### Results on KODAK
 
+![](results.png)
+
+
+Feel free to explore and experiment with ProgDTD to enhance your image compression tasks with progressive capabilities. If you have any questions or encounter issues, please refer to the documentation or reach out to the repository's maintainers for assistance.
+results.png
 
 
 ```

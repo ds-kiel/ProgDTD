@@ -46,7 +46,7 @@ python train.py
 ```
 
 ### Trained models
-You can download the pretrained models [here](https://drive.google.com/drive/folders/1tO9yAohVi4uqEXcKLa9iyVKTHA1A2ztq?usp=sharing).
+You can download the pre-trained models [here](https://drive.google.com/drive/folders/1tO9yAohVi4uqEXcKLa9iyVKTHA1A2ztq?usp=sharing). In this folder, there are 6 models that have been trained with different Lambdas and progressiveness ranges.
 
 ### Evaluation on KODAK Dataset
 

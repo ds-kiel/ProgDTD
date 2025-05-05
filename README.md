@@ -1,7 +1,7 @@
 
 # ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW-2023)
 
-Welcome to the ProgDTD repository! This repository contains the code for reproducing the results presented in the paper titled "ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW-2023)."
+Welcome to the ProgDTD repository! This repository contains the code for reproducing the results presented in the paper titled [ProgDTD: Progressive Learned Image Compression with Double-Tail-Drop Training (CVPRW'2023)](https://openaccess.thecvf.com/content/CVPR2023W/NTIRE/papers/Hojjat_ProgDTD_Progressive_Learned_Image_Compression_With_Double-Tail-Drop_Training_CVPRW_2023_paper.pdf)
 
 ## About ProgDTD
 
